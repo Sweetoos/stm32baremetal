@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdint.h>
 #include "stm32f4xx.h"
 #include "stm32f446xx.h"
@@ -33,12 +34,18 @@ void uart2_write(int ch)
 	while(!((USART2->SR)&(1U<<7)));
 	USART2->DR=(ch&0xFF);
 }
+
+int __io_putchar(int ch)
+{
+	uart2_write(ch);
+	return ch;
+}
 int main(void)
 {
 	uart_config();
 
 		while(1)
 		{
-			uart2_write('K');
+			printf("Hello my friend!\n\r");
 		}
 }

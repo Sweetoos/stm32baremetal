@@ -1,24 +1,23 @@
 
 #include "uart.h"
 
-char key;
+
 
 int main(void)
 {
-	
+	char key;
 	uart_config();
-	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
-	GPIOA->MODER |= GPIO_MODER_MODE5_0;
+	led_config();
 	while (1)
 	{
 		key = uart2_read();
-		if(key=='1')
+		if (key == '1')
 		{
-			GPIOA->ODR |= GPIO_ODR_OD5;
+			LD2_ON;
 		}
-		else
+		if (key == '2')
 		{
-			GPIOA->ODR &= ~GPIO_ODR_OD5;
+			LD2_OFF;
 		}
 	}
 }

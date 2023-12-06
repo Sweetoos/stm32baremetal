@@ -1,0 +1,6 @@
+main.h:28:17:compute_uart_div	1
+main.h:33:13:uart_set_baudrate	1
+main.h:38:13:uart2_write	2
+main.h:45:6:UART2_Config	1
+main.h:60:5:__io_putchar	1
+main.c:3:5:main	1
